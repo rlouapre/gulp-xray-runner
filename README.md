@@ -6,7 +6,7 @@
 This plugin requires Gulp `~3.6.0`
 
 ```shell
-npm install https://github.com/rlouapre/gulp-xray-runner/tarball/v0.1.3 --save-dev
+npm install https://github.com/rlouapre/gulp-xray-runner/tarball/v0.0.1 --save-dev
 ```
 
 ## Usage
