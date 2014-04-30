@@ -1,6 +1,5 @@
 'use strict';
-// through2 is a thin wrapper around node transform streams
-var through = require('through2');
+
 var gutil = require('gulp-util');
 var PluginError = gutil.PluginError;
 
