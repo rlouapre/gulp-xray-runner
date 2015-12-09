@@ -6,7 +6,6 @@ var PluginError = gutil.PluginError;
 // Consts
 var PLUGIN_NAME = 'gulp-xray-runner';
 
-// var rimraf = require('rimraf');
 var es = require('event-stream');
 var gutil = require('gulp-util');
 var path = require('path');
@@ -21,10 +20,10 @@ module.exports = function (options, cb) {
   var request = require('request');
   var util = require('util');
 
-  // Validate task settings    
-  // var settings = this.data.settings;
-  
-  if (! Array.isArray(options.modules)) {
+  if (!options.modules) {
+    options.modules = [""];
+  }
+  if (!Array.isArray(options.modules)) {
     options.modules = [options.modules];
   }
   if (options === undefined) {
@@ -37,8 +36,7 @@ module.exports = function (options, cb) {
     gutil.log('data ' + JSON.stringify(options, null, 1));
   }
 
-  var done = cb;//this.async();
-  // var options = {verbose: verbose};
+  var done = cb;
   var Runner = require('./lib/runner');
   var runner = new Runner(options);
 
@@ -66,9 +64,9 @@ module.exports = function (options, cb) {
     request.post(options, function(error, response, body) {
 
       if (!error && response.statusCode === 200) {
-        gutil.log(body);
         body = JSON.parse(body);
         if (verbose) {
+          gutil.log(body);
           gutil.log('tests \n\n' + JSON.stringify(body.tests, null, 2));
         }
         runner.parseResponse(body.tests, showReport);
