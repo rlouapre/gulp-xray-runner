@@ -1,6 +1,6 @@
 {
   "name": "gulp-xray-runner",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "homepage": "https://github.com/rlouapre/gulp-xray-runner",
   "description": "Gulp plugin for XRay test framework",
   "author": {
